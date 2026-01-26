@@ -18,7 +18,7 @@ def has_symbols(password):
 	return any(not letter.isalnum() for letter in password)
 
 
-if __name__ == "__main__":
+def main():
 	password = input("Введите пароль: ")
 
 	functions = [
@@ -37,3 +37,6 @@ if __name__ == "__main__":
 
 
 	print(score)
+	
+if __name__ == '__main__':
+	main()
