@@ -1,6 +1,3 @@
-password = input("Введите пароль: ")
-
-
 def has_digit(password):
 	return any(letter.isdigit() for letter in password)
 
@@ -17,29 +14,26 @@ def has_lower_letters(password):
 	return any(letter.islower() for letter in password)
 
 
-def has_symbols(password):
+def has_symbols(password):	
+	return any(not letter.isalnum() for letter in password)
 
-	symbols = [
-		"!","@","#","%","^","&","*","(",")","-","=","+",
-		"_","№","{","}","[","]","?","/","|","\\",",",".","<",">"
+
+if __name__ == "__main__":
+	password = input("Введите пароль: ")
+
+	functions = [
+		has_digit, 
+		is_very_long, 
+		has_upper_letters, 
+		has_lower_letters, 
+		has_symbols
 	]
-	
-	return any(letter in symbols for letter in password)
 
 
-functions = [
-	has_digit, 
-	is_very_long, 
-	has_upper_letters, 
-	has_lower_letters, 
-	has_symbols
-]
+	score = 0
+	for function in functions:
+		if function(password):
+			score = score + 2
 
 
-score = 0
-for function in functions:
-	if function(password):
-		score = score + 2
-
-
-print(score)
+	print(score)
